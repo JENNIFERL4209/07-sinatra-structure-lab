@@ -60,30 +60,30 @@ This directory holds the logic behind our application. Typically, these files re
 
 Models represent the data and object logic of our application.
 
-Create a new file in the models directory to create a dog class. This class should have name, breed, and age attributes which can be set on initialization. You should be able to read and write to these attributes. This class should also keep track of each instance of dog created, as well as a class method `all` to return an array of those instances.
+**Create a new file** in the models directory to create a dog class. This class should have name, breed, and age attributes which can be set on initialization. You should be able to read and write to these attributes. This class should also keep track of each instance of dog created, as well as a class method `all` to return an array of those instances.
 
 #### `controllers` directory
 
 The controllers, such as `application_controller.rb`, are where the application configurations, routes, and controller actions are implemented. There is typically a class, which in this case we will call `ApplicationController`, that represents an instance of your application when the server is up and running. The `application_controller.rb` file represents the "C" components of the MVC paradigm.
 
-(In some simple applications –– including several labs and code-alongs in this track –– the Application Controller will simply be called `app.rb` and will live in the root directory of the project)
+(In some simple applications –– including several labs and code-alongs –– the Application Controller will simply be called `app.rb` and will live in the root directory of the project)
 
-Sometimes our other controllers will use `ApplicationController` as an inheritance point so that they inherit all the defaults and behaviors defined in our main `ApplicationController`. Other times our other controllers will simply inherit from `Sinatra::Base`.
+Sometimes our other controllers will use `ApplicationController` as an inheritance point so that they inherit all the defaults and behaviors defined in our main `ApplicationController`. Other times our other controllers will simply inherit from `Sinatra::Base`.  Don't worry too much about inheritance for now.
 
 Controllers represent the application logic, generally; the interface and flow of our application.
 
 Let's go ahead and fill in our controller. You'll notice in `application_controller.rb`, we have an `ApplicationController` class that inherits from `Sinatra::Base`. When we start up a server, the server will spin up an instance of the `ApplicationController` class to run our app.
 
-You'll also notice there is a `configure` block already in the controller. This configure block tells the controller where to look to find the views (your pages with HTML to display text in the browser.) and the public directory.
+You'll also notice there is a `configure` block already in the controller. This configure block tells the controller where to look to find the views (your pages with HTML to display text in the browser) and the public directory.
 
 When a client makes a request to a server to load an application, the request is received and processed by the controller. We need to set up a controller action to accept the request and respond with the appropriate HTML.
 
-We've created a controller action that can receive and respond to a `GET` request to the root URL `'/'`. This `GET` request loads the `index.erb` file.
+In the controller, **create a route** that can handle a `get` request to the root URL `'/'`. You can make this `get` request load the `index.erb` file by simply putting `erb :index` between the `do`/`end`.
 
 
 #### `views` directory
 
-This directory holds the code that will be displayed in the browser. In a Sinatra app we use `.erb` files instead of `.html` files because .erb files allow us to include regular, old HTML tags AND special erb tags which contain Ruby code. We can name them anything we like, but by convention, our file names will match up with the action that renders them. For example, a GET request to `/` typically renders a file called `index.erb`.
+This directory holds the code that will be displayed in the browser. In a Sinatra app we use `.erb` files instead of `.html` files because .erb files allow us to include regular, old HTML tags AND special erb tags which contain Ruby code. We can name them anything we like, but by convention, our file names will match up with the action that renders them. For example, a GET request to `/` typically renders a file named `index.erb`.  And a GET request to `/result` typically renders a file named `result.erb`.
 
 Views represent how things look and are displayed in our application. We've created a file `index.erb` that contains some basic HTML code.
 
@@ -103,11 +103,13 @@ In this case, our `config.ru` file contains the line `run ApplicationController`
 
 This directory holds an `environment.rb` file. We'll be using this file to connect up all the files in our application to the appropriate gems and to each other.
 
-This `environment.rb` file loads Bundler and thus all the gems in our Gemfile, as well as the `app` directory`.
+This `environment.rb` file loads Bundler and thus all the gems in our Gemfile, as well as the `app` directory.
 
 ### `public` directory
 
 The `public` directory holds our front-end assets. In the example above, it holds a `css` directory with a stylesheet. Javascript directories and any other front-end assets (like image files) should also be stored in `public`.
+
+But notice how `index.erb` links to `css/style.css` (you don't need to include `public/` in the file path).
 
 ### `spec` directory
 
@@ -115,4 +117,5 @@ The `spec` directory contains any tests for our applications. These tests set up
 
 Don't forget to run your tests!
 
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-mvc-file-structure' title='Sinatra MVC File Structure'>Sinatra MVC File Structure</a> on Learn.co and start learning to code for free.</p>
+## Wait, so what does this app do?
+Honestly, nothing. The `Dog` model had nothing to do with the front end. We didn't pass any information around between the front/backend.  That will come soon enough. For now, you just need to get familiar with all of the files in an Sinatra app.
