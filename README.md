@@ -118,4 +118,4 @@ The `spec` directory contains any tests for our applications. These tests set up
 Don't forget to run your tests!
 
 ## Wait, so what does this app do?
-Honestly, nothing. The `Dog` model had nothing to do with the front end. We didn't pass any information around between the front/backend.  That will come soon enough. For now, you just need to get familiar with all of the files in an Sinatra app.
+Honestly, nothing. The `Dog` model had nothing to do with the front end. We didn't pass any information around between the front/backend.  That will come soon enough. For now, you just need to get familiar with all of the files in a Sinatra app.
