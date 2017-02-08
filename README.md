@@ -40,9 +40,9 @@ Take a look at the file structure in this directory. It's okay if it feels overw
     ├── features
     ├── models
     └── spec_helper.rb
+├── config.ru
 ├── Gemfile
 ├── README.md
-├── config.ru
 ```
 
 
